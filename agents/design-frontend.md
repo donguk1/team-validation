@@ -1,6 +1,6 @@
 ---
 name: design-frontend
-description: Use this agent when:\n- Designing UI component structures for new features\n- Planning page flows and navigation\n- Defining state management strategy\n- Creating component hierarchy diagrams
+description: Design UI component structures, page flows, state management, and component hierarchies
 model: sonnet
 color: yellow
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

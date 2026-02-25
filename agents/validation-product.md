@@ -1,6 +1,6 @@
 ---
 name: validation-product
-description: Use this agent when:\n- Checking feature completeness from a user perspective\n- Reviewing error messages and UX quality\n- Analyzing user scenario coverage\n- Evaluating accessibility and internationalization
+description: Check feature completeness, UX quality, user scenario coverage, and accessibility
 model: sonnet
 color: yellow
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

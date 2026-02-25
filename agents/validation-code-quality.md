@@ -1,6 +1,6 @@
 ---
 name: validation-code-quality
-description: Use this agent when:\n- Checking SOLID principle violations\n- Detecting code smells (duplication, long methods, god classes)\n- Analyzing naming conventions and consistency\n- Reviewing test coverage and quality
+description: Check SOLID violations, code smells, naming conventions, and test coverage quality
 model: sonnet
 color: green
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

@@ -73,6 +73,7 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 |------|------|----------|
 | 1.0.0 | 2026-02-25 | 초기 릴리스 — validation 에이전트 9개, `/team-validation` 커맨드 |
 | 1.1.0 | 2026-02-25 | design 에이전트 6개, `/team-design` 커맨드 추가 |
+| 1.1.1 | 2026-02-25 | marketplace.json description 업데이트, LICENSE 추가, 에이전트 description 형식 수정 |
 
 ### 자동 업데이트
 

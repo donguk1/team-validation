@@ -1,6 +1,6 @@
 ---
 name: validation-bug-hunter
-description: Use this agent when:\n- Searching for potential bugs and runtime errors\n- Detecting security vulnerabilities (SQL injection, XSS, CSRF)\n- Finding race conditions and memory leaks\n- Analyzing error propagation paths
+description: Detect bugs, security vulnerabilities, race conditions, and error propagation issues
 model: sonnet
 color: red
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

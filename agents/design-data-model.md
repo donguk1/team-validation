@@ -1,6 +1,6 @@
 ---
 name: design-data-model
-description: Use this agent when:\n- Designing database schemas and table structures\n- Creating ERD diagrams for new features\n- Planning table relationships and constraints\n- Defining migration strategies
+description: Design database schemas, ERD diagrams, table relationships, and migration strategies
 model: sonnet
 color: green
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

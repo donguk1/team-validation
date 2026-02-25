@@ -1,6 +1,6 @@
 ---
 name: validation-backend
-description: Use this agent when:\n- Reviewing REST/GraphQL API endpoint design\n- Checking authentication and authorization implementation\n- Analyzing database transaction management\n- Verifying error handling patterns in backend code
+description: Review API endpoints, authentication, transaction management, and error handling patterns
 model: sonnet
 color: cyan
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

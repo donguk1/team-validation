@@ -1,6 +1,6 @@
 ---
 name: validation-db-optimizer
-description: Use this agent when:\n- Analyzing SQL query performance\n- Checking index optimization opportunities\n- Detecting N+1 query problems\n- Reviewing database schema design and migrations
+description: Analyze SQL query performance, index optimization, N+1 problems, and schema design
 model: sonnet
 color: yellow
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

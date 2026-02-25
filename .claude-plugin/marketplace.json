@@ -8,9 +8,9 @@
     {
       "name": "team-validation",
       "source": "./",
-      "description": "Multi-agent project validation for Claude Code",
+      "description": "Multi-agent project validation & design for Claude Code. Validate existing code or design new features in parallel.",
       "category": "testing",
-      "tags": ["validation", "agents", "code-review", "architecture", "security"]
+      "tags": ["validation", "design", "agents", "code-review", "architecture", "feature-design"]
     }
   ]
 }

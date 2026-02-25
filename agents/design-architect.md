@@ -1,6 +1,6 @@
 ---
 name: design-architect
-description: Use this agent when:\n- Designing overall system architecture for a new feature\n- Defining layer structure and module boundaries\n- Creating architecture diagrams (Mermaid)\n- Analyzing impact on existing modules
+description: Design system architecture, layer structure, module boundaries, and Mermaid diagrams
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

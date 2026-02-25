@@ -1,6 +1,6 @@
 ---
 name: design-test-strategy
-description: Use this agent when:\n- Planning test strategy for a new feature\n- Defining unit, integration, and E2E test cases\n- Identifying critical paths that need testing\n- Designing test data and fixtures
+description: Plan test strategy, define test cases (unit/integration/E2E), and design test fixtures
 model: sonnet
 color: red
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

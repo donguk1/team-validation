@@ -1,6 +1,6 @@
 ---
 name: validation-python
-description: Use this agent when:\n- Reviewing Python project configuration (pyproject.toml, uv, ruff)\n- Checking dependency management and virtual environment setup\n- Verifying linting and formatting rules\n- Reviewing test configuration and pytest setup
+description: Review Python project config (pyproject.toml, uv, ruff), dependencies, and test setup
 model: sonnet
 color: magenta
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

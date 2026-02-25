@@ -1,6 +1,6 @@
 ---
 name: validation-architect
-description: Use this agent when:\n- Analyzing overall system architecture and design patterns\n- Checking dependency direction between layers\n- Detecting circular dependencies\n- Evaluating architectural decisions
+description: Analyze system architecture, dependency direction, circular dependencies, and design patterns
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

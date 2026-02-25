@@ -1,6 +1,6 @@
 ---
 name: validation-dedup
-description: Use this agent when:\n- Detecting duplicate or near-duplicate function logic across the codebase\n- Finding functions with different names but identical behavior\n- Identifying repeated patterns that should be extracted into shared utilities\n- Suggesting refactoring to reduce code duplication
+description: Detect duplicate function logic, identical behaviors, and repeated patterns for refactoring
 model: sonnet
 color: magenta
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

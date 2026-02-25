@@ -1,6 +1,6 @@
 ---
 name: design-task-breakdown
-description: Use this agent when:\n- Breaking down a feature into implementation tasks\n- Defining task dependencies and execution order\n- Estimating complexity of each task\n- Creating an actionable implementation plan
+description: Break down features into tasks, define dependencies, estimate complexity, and plan execution
 model: sonnet
 color: magenta
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

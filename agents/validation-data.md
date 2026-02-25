@@ -1,6 +1,6 @@
 ---
 name: validation-data
-description: Use this agent when:\n- Reviewing data processing pipelines and ETL logic\n- Checking ML model training and prediction code\n- Analyzing data preprocessing quality\n- Evaluating feature engineering approaches
+description: Review data pipelines, ETL logic, ML model code, and feature engineering quality
 model: sonnet
 color: green
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]

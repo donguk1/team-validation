@@ -1,6 +1,6 @@
 ---
 name: design-api
-description: Use this agent when:\n- Designing REST/GraphQL API endpoints for a new feature\n- Defining request/response schemas\n- Planning authentication and authorization flows\n- Specifying API error handling conventions
+description: Design API endpoints, request/response schemas, authentication flows, and error conventions
 model: sonnet
 color: cyan
 tools: ["Read", "Glob", "Grep", "Bash", "Task"]
