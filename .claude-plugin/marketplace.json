@@ -1,0 +1,16 @@
+{
+  "name": "team-validation",
+  "owner": {
+    "name": "donguk1",
+    "url": "https://github.com/donguk1"
+  },
+  "plugins": [
+    {
+      "name": "team-validation",
+      "source": "./",
+      "description": "Multi-agent project validation for Claude Code",
+      "category": "testing",
+      "tags": ["validation", "agents", "code-review", "architecture", "security"]
+    }
+  ]
+}
