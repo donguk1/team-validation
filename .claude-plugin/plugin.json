@@ -9,6 +9,5 @@
   "repository": "https://github.com/donguk1/team-validation",
   "license": "MIT",
   "keywords": ["validation", "agents", "code-review", "architecture", "security"],
-  "commands": "./commands",
-  "agents": ["./agents"]
+  "commands": "./commands"
 }
