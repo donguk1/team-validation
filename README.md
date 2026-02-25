@@ -1,8 +1,8 @@
 # team-validation
 
-Claude Code 멀티 에이전트 프로젝트 검증 플러그인.
+Claude Code 멀티 에이전트 프로젝트 검증 & 설계 플러그인.
 
-4~9개 전문 에이전트가 병렬로 프로젝트를 검증합니다. 외부 스킬/플러그인 의존성 없음.
+전문 에이전트가 병렬로 프로젝트를 검증하거나, 새 기능을 설계합니다. 외부 의존성 없음.
 
 ## 설치
 
@@ -21,7 +21,11 @@ claude plugin uninstall team-validation
 claude plugin marketplace remove team-validation
 ```
 
-## 사용법
+## 커맨드
+
+### `/team-validation` — 프로젝트 검증
+
+4~9개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다.
 
 ```
 /team-validation <프로젝트 경로>
@@ -35,7 +39,24 @@ claude plugin marketplace remove team-validation
 3. 모든 에이전트를 병렬 실행 (읽기 전용 분석)
 4. 종합 리포트 생성
 
-## 에이전트 구성
+### `/team-design` — 기능 설계
+
+3~6개 에이전트가 병렬로 새 기능의 설계 산출물을 만듭니다.
+
+```
+/team-design <기능 요구사항>
+/team-design "유저 인증 시스템 추가"
+/team-design "실시간 알림 기능 구현"
+```
+
+실행하면:
+1. 기능 요구사항 파악 + 현재 프로젝트 분석
+2. 적합한 에이전트 3~6개를 선택하여 사용자에게 확인
+3. 모든 에이전트를 병렬 실행 (설계 산출물 생성)
+4. 통합 설계 문서 생성
+5. 사용자 선택: "문서만 유지" or "코드 구현 진행"
+
+## 검증 에이전트 (validation-*)
 
 프로젝트 특성에 따라 최소 4개 ~ 최대 9개 에이전트가 자동 선택됩니다.
 
@@ -51,7 +72,7 @@ claude plugin marketplace remove team-validation
 | `validation-product` | 기능 완성도/UX 검증 |
 | `validation-dedup` | 함수 로직 중복 탐지/리팩토링 제안 |
 
-## 프로젝트 타입별 기본 구성
+### 프로젝트 타입별 기본 구성
 
 | 프로젝트 타입 | 에이전트 | 수 |
 |-------------|---------|---|
@@ -60,7 +81,41 @@ claude plugin marketplace remove team-validation
 | 데이터/ML | architect, code-quality, dedup, db-optimizer, python, data | 6 |
 | 풀스택/모노레포 | 최대 9개 전부 활용 | 9 |
 
+## 설계 에이전트 (design-*)
+
+프로젝트 특성에 따라 최소 3개 ~ 최대 6개 에이전트가 자동 선택됩니다.
+
+| 에이전트 | 역할 |
+|---------|------|
+| `design-architect` | 전체 아키텍처 설계, 레이어 구조, Mermaid 다이어그램 |
+| `design-api` | API 엔드포인트 스펙, 요청/응답 스키마, 인증 흐름 |
+| `design-data-model` | DB 스키마/ERD, 테이블 관계, 마이그레이션 계획 |
+| `design-frontend` | UI 컴포넌트 구조, 페이지 흐름, 상태 관리 설계 |
+| `design-task-breakdown` | 구현 태스크 분해, 의존성/순서, 예상 복잡도 |
+| `design-test-strategy` | 테스트 전략, 테스트 케이스 목록, E2E 시나리오 |
+
+### 프로젝트 타입별 기본 구성
+
+| 프로젝트 타입 | 에이전트 | 수 |
+|-------------|---------|---|
+| Python 백엔드 (FastAPI/Django) | architect, api, data-model, task-breakdown | 4 |
+| JS/TS 프론트엔드 (Next.js/React) | architect, frontend, task-breakdown | 3 |
+| 풀스택 | architect, api, data-model, frontend, task-breakdown, test-strategy | 6 |
+| 데이터/ML | architect, data-model, task-breakdown | 3 |
+
+## 검증 vs 설계 비교
+
+| | `/team-validation` | `/team-design` |
+|---|---|---|
+| 목적 | 기존 코드 문제 찾기 | 새 기능 설계 |
+| 입력 | 프로젝트 경로 | 기능 요구사항 텍스트 |
+| 동작 | 읽기 전용 분석 | 읽기 + 설계 문서 생성 |
+| 출력 | 점수/이슈 리포트 | 설계 문서/다이어그램/태스크 |
+| 후속 | 이슈 수정 | 문서만 or 코드 구현까지 선택 |
+
 ## 출력 예시
+
+### 검증 (/team-validation)
 
 실제 Python 데이터 프로젝트에서 테스트한 결과:
 
@@ -81,6 +136,24 @@ claude plugin marketplace remove team-validation
 
 각 에이전트가 `파일:라인` 수준으로 구체적인 이슈를 보고하며, Critical/Warning/Suggestion으로 분류합니다.
 
+### 설계 (/team-design)
+
+```
+📐 Team Design Report: 유저 인증 시스템
+
+| # | 에이전트 | 역할 |
+|---|---------|------|
+| 1 | design-architect | 아키텍처 설계 |
+| 2 | design-api | API 설계 |
+| 3 | design-data-model | 데이터 모델 설계 |
+| 4 | design-task-breakdown | 태스크 분해 |
+
+1. 아키텍처 설계 — 레이어 구조, Mermaid 다이어그램
+2. API 설계 — 엔드포인트, 스키마, 인증 흐름
+3. 데이터 모델 — ERD, 마이그레이션 계획
+4. 구현 태스크 — Phase별 태스크, 의존성
+```
+
 ## 구조
 
 ```
@@ -89,17 +162,24 @@ team-validation/
 │   ├── plugin.json              # 플러그인 메타데이터
 │   └── marketplace.json         # 마켓플레이스 등록 정보
 ├── commands/
-│   └── team-validation.md       # /team-validation 슬래시 커맨드
+│   ├── team-validation.md       # /team-validation 슬래시 커맨드
+│   └── team-design.md           # /team-design 슬래시 커맨드
 ├── agents/
-│   ├── validation-architect.md
-│   ├── validation-backend.md
-│   ├── validation-code-quality.md
-│   ├── validation-bug-hunter.md
-│   ├── validation-db-optimizer.md
-│   ├── validation-python.md
-│   ├── validation-data.md
-│   ├── validation-product.md
-│   └── validation-dedup.md
+│   ├── validation-architect.md     # 검증: 아키텍처
+│   ├── validation-backend.md       # 검증: 백엔드
+│   ├── validation-code-quality.md  # 검증: 코드 품질
+│   ├── validation-bug-hunter.md    # 검증: 버그 탐지
+│   ├── validation-db-optimizer.md  # 검증: DB 최적화
+│   ├── validation-python.md        # 검증: Python 설정
+│   ├── validation-data.md          # 검증: 데이터/ML
+│   ├── validation-product.md       # 검증: 프로덕트
+│   ├── validation-dedup.md         # 검증: 중복 탐지
+│   ├── design-architect.md         # 설계: 아키텍처
+│   ├── design-api.md               # 설계: API
+│   ├── design-data-model.md        # 설계: 데이터 모델
+│   ├── design-frontend.md          # 설계: 프론트엔드
+│   ├── design-task-breakdown.md    # 설계: 태스크 분해
+│   └── design-test-strategy.md     # 설계: 테스트 전략
 └── README.md
 ```
 
