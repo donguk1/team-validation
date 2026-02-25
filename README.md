@@ -1,26 +1,20 @@
 # team-validation
 
-Claude Code 멀티 에이전트 프로젝트 검증 도구.
+Claude Code 멀티 에이전트 프로젝트 검증 플러그인.
 
-외부 스킬/플러그인 의존성 없이, 프로젝트에 포함된 에이전트 정의만으로 동작합니다.
+4~8개 전문 에이전트가 병렬로 프로젝트를 검증합니다. 외부 의존성 없음.
 
 ## 설치
 
-프로젝트 루트에 `.claude/` 디렉토리를 복사하면 됩니다:
-
 ```bash
-# 방법 1: 직접 복사
-cp -r .claude/commands/team-validation.md <your-project>/.claude/commands/
-cp -r .claude/agents/validation-*.md <your-project>/.claude/agents/
-
-# 방법 2: 서브모듈 (선택)
-git submodule add https://github.com/donguk1/team-validation.git .team-validation
+claude install donguk1/team-validation
 ```
 
 ## 사용법
 
 ```
 /team-validation <프로젝트 경로>
+/team-validation jiwon-sync-dio
 /team-validation .
 ```
 
@@ -63,18 +57,21 @@ git submodule add https://github.com/donguk1/team-validation.git .team-validatio
 ## 구조
 
 ```
-.claude/
+team-validation/
+├── .claude-plugin/
+│   └── plugin.json                 # 플러그인 메타데이터
 ├── commands/
 │   └── team-validation.md          # /team-validation 슬래시 커맨드
-└── agents/
-    ├── validation-architect.md
-    ├── validation-backend.md
-    ├── validation-code-quality.md
-    ├── validation-bug-hunter.md
-    ├── validation-db-optimizer.md
-    ├── validation-python.md
-    ├── validation-data.md
-    └── validation-product.md
+├── agents/
+│   ├── validation-architect.md
+│   ├── validation-backend.md
+│   ├── validation-code-quality.md
+│   ├── validation-bug-hunter.md
+│   ├── validation-db-optimizer.md
+│   ├── validation-python.md
+│   ├── validation-data.md
+│   └── validation-product.md
+└── README.md
 ```
 
 ## 요구사항

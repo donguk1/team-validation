@@ -1,0 +1,14 @@
+{
+  "name": "team-validation",
+  "version": "1.0.0",
+  "description": "Multi-agent project validation for Claude Code. 4~8 agents review architecture, backend, code quality, security, DB, Python tooling, data pipelines, and product quality in parallel.",
+  "author": {
+    "name": "donguk1",
+    "url": "https://github.com/donguk1"
+  },
+  "repository": "https://github.com/donguk1/team-validation",
+  "license": "MIT",
+  "keywords": ["validation", "agents", "code-review", "architecture", "security"],
+  "commands": "./commands",
+  "agents": ["./agents"]
+}
