@@ -43,6 +43,43 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 5. README 각각 업데이트
 6. 마켓플레이스 등록
 
+## 버전 관리
+
+### 규칙
+
+- **Semantic Versioning** 사용: `MAJOR.MINOR.PATCH`
+- `plugin.json`의 `version` 필드가 **플러그인 캐시 업데이트의 기준** — 버전을 올리지 않으면 캐시가 갱신되지 않음
+
+### 버전 올리는 기준
+
+| 변경 유형 | 버전 | 예시 |
+|----------|------|------|
+| 에이전트/커맨드 추가·삭제 | **MINOR** | 1.0.0 → 1.1.0 |
+| 에이전트 프롬프트 수정, 버그 수정 | **PATCH** | 1.1.0 → 1.1.1 |
+| 호환성 깨지는 변경 (커맨드 이름 변경 등) | **MAJOR** | 1.1.1 → 2.0.0 |
+| README, SCALING.md 등 문서만 수정 | 올리지 않음 | - |
+
+### 릴리스 체크리스트
+
+1. `plugin.json`의 `version` 업데이트
+2. git commit + push
+3. `claude plugin marketplace update team-validation`
+4. `claude plugin update team-validation@team-validation`
+5. Claude Code 재시작
+
+### 버전 히스토리
+
+| 버전 | 날짜 | 변경 내용 |
+|------|------|----------|
+| 1.0.0 | 2026-02-25 | 초기 릴리스 — validation 에이전트 9개, `/team-validation` 커맨드 |
+| 1.1.0 | 2026-02-25 | design 에이전트 6개, `/team-design` 커맨드 추가 |
+
+### 자동 업데이트
+
+- `known_marketplaces.json`에 `"autoUpdate": true` 설정됨
+- Claude Code 시작 시 + 10분 간격으로 백그라운드 체크
+- 자동 업데이트가 동작하려면 **반드시 version을 올려야** 함
+
 ## 현재 결정
 
 - **지금은 분리하지 않음** — 15개는 prefix로 관리 가능
