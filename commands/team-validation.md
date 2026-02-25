@@ -28,6 +28,7 @@
 | validation-python | `.claude/agents/validation-python.md` | Python 도구 설정 검증 |
 | validation-data | `.claude/agents/validation-data.md` | 데이터 파이프라인/ML 검증 |
 | validation-product | `.claude/agents/validation-product.md` | 기능 완성도/UX 검증 |
+| validation-dedup | `.claude/agents/validation-dedup.md` | 함수 로직 중복 탐지/리팩토링 제안 |
 
 ## 실행 순서
 
@@ -37,14 +38,14 @@
 2. 프로젝트의 CLAUDE.md, pyproject.toml, package.json 등을 읽어 기술 스택 파악
 3. 프로젝트 타입 분류
 
-### Phase 1: 에이전트 선택 (최소 4개, 최대 8개)
+### Phase 1: 에이전트 선택 (최소 4개, 최대 9개)
 
 프로젝트 특성에 따라 위 에이전트 중 적합한 것을 선택합니다:
 
-- **Python 백엔드** (FastAPI/Django): architect, backend, code-quality, bug-hunter, db-optimizer, python (6개)
-- **JS/TS 프론트엔드** (Next.js/React): architect, code-quality, bug-hunter, product (4개)
-- **데이터/ML 프로젝트**: architect, code-quality, db-optimizer, python, data (5개)
-- **풀스택/모노레포**: 최대 8개 전부 활용
+- **Python 백엔드** (FastAPI/Django): architect, backend, code-quality, bug-hunter, dedup, db-optimizer, python (7개)
+- **JS/TS 프론트엔드** (Next.js/React): architect, code-quality, bug-hunter, dedup, product (5개)
+- **데이터/ML 프로젝트**: architect, code-quality, dedup, db-optimizer, python, data (6개)
+- **풀스택/모노레포**: 최대 9개 전부 활용
 
 선택한 구성을 사용자에게 테이블로 보여주고 확인받을 것.
 

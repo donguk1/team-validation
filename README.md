@@ -32,13 +32,14 @@ claude install donguk1/team-validation
 | `validation-python` | Python 도구 설정 검증 |
 | `validation-data` | 데이터 파이프라인/ML 검증 |
 | `validation-product` | 기능 완성도/UX 검증 |
+| `validation-dedup` | 함수 로직 중복 탐지/리팩토링 제안 |
 
 ## 프로젝트 타입별 기본 구성
 
-- **Python 백엔드** (FastAPI/Django): architect, backend, code-quality, bug-hunter, db-optimizer, python (6개)
-- **JS/TS 프론트엔드** (Next.js/React): architect, code-quality, bug-hunter, product (4개)
-- **데이터/ML**: architect, code-quality, db-optimizer, python, data (5개)
-- **풀스택/모노레포**: 최대 8개 전부 활용
+- **Python 백엔드** (FastAPI/Django): architect, backend, code-quality, bug-hunter, dedup, db-optimizer, python (7개)
+- **JS/TS 프론트엔드** (Next.js/React): architect, code-quality, bug-hunter, dedup, product (5개)
+- **데이터/ML**: architect, code-quality, dedup, db-optimizer, python, data (6개)
+- **풀스택/모노레포**: 최대 9개 전부 활용
 
 ## 출력 예시
 
@@ -70,7 +71,8 @@ team-validation/
 │   ├── validation-db-optimizer.md
 │   ├── validation-python.md
 │   ├── validation-data.md
-│   └── validation-product.md
+│   ├── validation-product.md
+│   └── validation-dedup.md
 └── README.md
 ```
 
