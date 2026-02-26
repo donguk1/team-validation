@@ -183,6 +183,25 @@ team-validation/
 └── README.md
 ```
 
+## 권한 설정 (권장)
+
+에이전트 실행 시 파일 읽기/검색마다 권한을 묻는 게 번거롭다면, 프로젝트의 `.claude/settings.json`에 다음을 추가하세요:
+
+```json
+{
+  "permissions": {
+    "allowedTools": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash"
+    ]
+  }
+}
+```
+
+이 설정은 **플러그인 설치 시 자동 적용되지 않으므로**, 검증 대상 프로젝트에서 직접 설정해야 합니다.
+
 ## 요구사항
 
 - [Claude Code](https://claude.ai/code) CLI
