@@ -25,19 +25,22 @@ claude plugin marketplace remove team-validation
 
 ### `/team-validation` — 프로젝트 검증
 
-4~9개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다.
+4~10개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다. 유연한 범위 지정을 지원합니다.
 
 ```
-/team-validation <프로젝트 경로>
-/team-validation my-backend-project
-/team-validation .
+/team-validation <프로젝트 경로>    # 프로젝트 전체
+/team-validation staged             # git staged 변경만
+/team-validation current            # git unstaged 변경만
+/team-validation #42                # PR #42 변경
+/team-validation src/auth           # 특정 디렉토리
+/team-validation .                  # 현재 디렉토리 전체
 ```
 
 실행하면:
-1. 프로젝트 기술 스택을 자동 파악
-2. 적합한 에이전트 4~9개를 선택하여 사용자에게 확인
+1. 범위 결정 + 프로젝트 기술 스택을 자동 파악
+2. 적합한 에이전트 4~10개를 선택하여 사용자에게 확인
 3. 모든 에이전트를 병렬 실행 (읽기 전용 분석)
-4. 종합 리포트 생성
+4. 검증 범위가 표시된 종합 리포트 생성
 
 ### `/team-design` — 기능 설계
 
@@ -58,7 +61,7 @@ claude plugin marketplace remove team-validation
 
 ## 검증 에이전트 (validation-*)
 
-프로젝트 특성에 따라 최소 4개 ~ 최대 9개 에이전트가 자동 선택됩니다.
+프로젝트 특성에 따라 최소 4개 ~ 최대 10개 에이전트가 자동 선택됩니다.
 
 | 에이전트 | 역할 |
 |---------|------|
@@ -66,6 +69,9 @@ claude plugin marketplace remove team-validation
 | `validation-backend` | API/인증/트랜잭션 검증 |
 | `validation-code-quality` | SOLID/코드 스멜/네이밍 검증 |
 | `validation-bug-hunter` | 버그/보안 취약점 탐지 |
+| `validation-security` | OWASP Top 10 심층 감사/CVE 스캔 |
+| `validation-frontend` | React/Next.js 패턴/접근성/SEO |
+| `validation-game` | 게임 아키텍처/성능/밸런스 검증 |
 | `validation-db-optimizer` | DB 쿼리/인덱스/스키마 검증 |
 | `validation-python` | Python 프로젝트 설정 검증 (uv/ruff/pytest) |
 | `validation-data` | 데이터 파이프라인/ML 검증 |
@@ -76,10 +82,15 @@ claude plugin marketplace remove team-validation
 
 | 프로젝트 타입 | 에이전트 | 수 |
 |-------------|---------|---|
-| Python 백엔드 (FastAPI/Django) | architect, backend, code-quality, bug-hunter, dedup, db-optimizer, python | 7 |
-| JS/TS 프론트엔드 (Next.js/React) | architect, code-quality, bug-hunter, dedup, product | 5 |
-| 데이터/ML | architect, code-quality, dedup, db-optimizer, python, data | 6 |
-| 풀스택/모노레포 | 최대 9개 전부 활용 | 9 |
+| Python 백엔드 (FastAPI/Django) | 필수4 + backend, dedup, db-optimizer, python | 8 |
+| JS/TS 프론트엔드 (Next.js/React) | 필수4 + frontend, dedup, product | 7 |
+| 게임 (Godot/Unity/Unreal) | 필수4 + game | 5 |
+| 데이터/ML | 필수4 + dedup, db-optimizer, python, data | 8 |
+| 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product, python | 10 |
+
+> **필수 4개**: architect, code-quality, bug-hunter, security
+>
+> **code-quality 분할**: 대상 파일 30개 이상이면 code-quality 2개 투입
 
 ## 설계 에이전트 (design-*)
 
@@ -100,6 +111,7 @@ claude plugin marketplace remove team-validation
 |-------------|---------|---|
 | Python 백엔드 (FastAPI/Django) | architect, api, data-model, task-breakdown | 4 |
 | JS/TS 프론트엔드 (Next.js/React) | architect, frontend, task-breakdown | 3 |
+| 게임 (Godot/Unity/Unreal) | architect, task-breakdown, test-strategy | 3 |
 | 풀스택 | architect, api, data-model, frontend, task-breakdown, test-strategy | 6 |
 | 데이터/ML | architect, data-model, task-breakdown | 3 |
 
@@ -108,9 +120,9 @@ claude plugin marketplace remove team-validation
 | | `/team-validation` | `/team-design` |
 |---|---|---|
 | 목적 | 기존 코드 문제 찾기 | 새 기능 설계 |
-| 입력 | 프로젝트 경로 | 기능 요구사항 텍스트 |
+| 입력 | 경로/staged/current/PR#/디렉토리 | 기능 요구사항 텍스트 |
 | 동작 | 읽기 전용 분석 | 읽기 + 설계 문서 생성 |
-| 출력 | 점수/이슈 리포트 | 설계 문서/다이어그램/태스크 |
+| 출력 | 점수/이슈 리포트 (범위 표시 포함) | 설계 문서/다이어그램/태스크 |
 | 후속 | 이슈 수정 | 문서만 or 코드 구현까지 선택 |
 
 ## 출력 예시
@@ -122,16 +134,19 @@ claude plugin marketplace remove team-validation
 ```
 🔍 Team Validation Report: materialized_view_manager
 
+검증 범위: 전체 프로젝트
+
 | 에이전트 | 🔴 Critical | 🟡 Warning | 🟢 Suggestion | 점수 |
 |---------|------------|-----------|--------------|------|
 | architect | 3 | 11 | 6 | 6.5/10 |
 | code-quality | 5 | 10 | 7 | 5.5/10 |
 | bug-hunter | 4 | 8 | 6 | 7.0/10 |
+| security | 2 | 5 | 3 | 8.0/10 |
 | dedup | 3 | 4 | 2 | 4.0/10 |
 | db-optimizer | 4 | 10 | 6 | 7.5/10 |
 | python | 4 | 10 | 6 | 5.0/10 |
 
-📊 Overall Score: 5.9/10
+📊 Overall Score: 6.2/10
 ```
 
 각 에이전트가 `파일:라인` 수준으로 구체적인 이슈를 보고하며, Critical/Warning/Suggestion으로 분류합니다.
@@ -169,6 +184,9 @@ team-validation/
 │   ├── validation-backend.md       # 검증: 백엔드
 │   ├── validation-code-quality.md  # 검증: 코드 품질
 │   ├── validation-bug-hunter.md    # 검증: 버그 탐지
+│   ├── validation-security.md      # 검증: 보안 심층 감사
+│   ├── validation-frontend.md      # 검증: 프론트엔드
+│   ├── validation-game.md          # 검증: 게임
 │   ├── validation-db-optimizer.md  # 검증: DB 최적화
 │   ├── validation-python.md        # 검증: Python 설정
 │   ├── validation-data.md          # 검증: 데이터/ML

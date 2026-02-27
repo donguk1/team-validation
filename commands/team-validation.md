@@ -10,10 +10,12 @@
 ## 사용법
 
 ```
-/team-validation <프로젝트 경로>
-/team-validation jiwon-sync-dio
-/team-validation jiwon-search-backend
-/team-validation .
+/team-validation <프로젝트 경로>    # 프로젝트 전체
+/team-validation staged             # git staged 변경만
+/team-validation current            # git unstaged 변경만
+/team-validation #42                # PR #42 변경
+/team-validation src/auth           # 특정 디렉토리
+/team-validation .                  # 현재 디렉토리 전체
 ```
 
 ## 사용 가능한 에이전트 (프로젝트 내장)
@@ -24,6 +26,9 @@
 | validation-backend | `.claude/agents/validation-backend.md` | API/인증/트랜잭션 검증 |
 | validation-code-quality | `.claude/agents/validation-code-quality.md` | SOLID/코드 스멜/네이밍 검증 |
 | validation-bug-hunter | `.claude/agents/validation-bug-hunter.md` | 버그/보안 취약점 탐지 |
+| validation-security | `.claude/agents/validation-security.md` | OWASP Top 10 심층 감사/CVE 스캔 |
+| validation-frontend | `.claude/agents/validation-frontend.md` | React/Next.js 패턴/접근성/SEO |
+| validation-game | `.claude/agents/validation-game.md` | 게임 아키텍처/성능/밸런스 검증 |
 | validation-db-optimizer | `.claude/agents/validation-db-optimizer.md` | DB 쿼리/인덱스/스키마 검증 |
 | validation-python | `.claude/agents/validation-python.md` | Python 도구 설정 검증 |
 | validation-data | `.claude/agents/validation-data.md` | 데이터 파이프라인/ML 검증 |
@@ -32,31 +37,49 @@
 
 ## 실행 순서
 
-### Phase 0: 프로젝트 파악
+### Phase 0: 범위 결정 + 프로젝트 파악
 
-1. `$ARGUMENTS`로 전달된 프로젝트 경로 확인
-2. 프로젝트의 CLAUDE.md, pyproject.toml, package.json 등을 읽어 기술 스택 파악
+1. `$ARGUMENTS` 파싱:
+   - **비어있음** → AskUserQuestion으로 아래 중 택 1 질문:
+     - 프로젝트 전체 (현재 디렉토리)
+     - staged 변경 사항 (git diff --cached)
+     - unstaged 변경 사항 (git diff)
+     - 특정 디렉토리/파일 (사용자 입력)
+   - **`staged`** → `git diff --cached --name-only`로 대상 파일 목록 수집
+   - **`current`** → `git diff --name-only`로 대상 파일 목록 수집
+   - **`#숫자`** → `gh pr diff 숫자 --name-only`로 PR 변경 파일 목록 수집
+   - **경로** → 해당 경로가 디렉토리면 하위 전체, 파일이면 해당 파일
+2. 프로젝트의 CLAUDE.md, pyproject.toml, package.json, project.godot 등을 읽어 기술 스택 파악
 3. 프로젝트 타입 분류
 
-### Phase 1: 에이전트 선택 (최소 4개, 최대 9개)
+### Phase 1: 에이전트 선택 (최소 4개, 최대 10개)
 
-프로젝트 특성에 따라 위 에이전트 중 적합한 것을 선택합니다:
+**필수 4개** (모든 프로젝트):
+- architect, code-quality, bug-hunter, security
 
-- **Python 백엔드** (FastAPI/Django): architect, backend, code-quality, bug-hunter, dedup, db-optimizer, python (7개)
-- **JS/TS 프론트엔드** (Next.js/React): architect, code-quality, bug-hunter, dedup, product (5개)
-- **데이터/ML 프로젝트**: architect, code-quality, dedup, db-optimizer, python, data (6개)
-- **풀스택/모노레포**: 최대 9개 전부 활용
+**code-quality 분할**: 대상 파일이 30개 이상이면 code-quality를 2개 투입 (파일 반씩 분담)
+
+프로젝트 특성에 따라 추가 에이전트를 선택합니다:
+
+- **Python 백엔드** (FastAPI/Django): 필수4 + backend, dedup, db-optimizer, python (8개)
+- **JS/TS 프론트엔드** (Next.js/React): 필수4 + frontend, dedup, product (7개)
+- **게임** (Godot/Unity/Unreal): 필수4 + game (5개)
+- **데이터/ML**: 필수4 + dedup, db-optimizer, python, data (8개)
+- **풀스택/모노레포**: 필수4 + backend, frontend, dedup, db-optimizer, product, python (10개)
 
 선택한 구성을 사용자에게 테이블로 보여주고 확인받을 것.
 
 ### Phase 2: 팀 생성 및 병렬 실행
 
-1. TeamCreate로 `validation-{프로젝트명}` 팀 생성
-2. TaskCreate로 에이전트별 검증 태스크 생성
-3. Task tool로 각 에이전트를 **병렬** 실행
+1. TaskCreate로 에이전트별 검증 태스크 생성
+2. Task tool로 각 에이전트를 **병렬** 실행
    - `subagent_type: "general-purpose"` 사용
    - 각 에이전트의 역할과 프롬프트를 Task의 prompt에 포함
    - 대상 프로젝트 경로를 명확히 전달
+   - **검증 범위** 정보를 각 에이전트에게 명시적으로 전달:
+     - 전체 프로젝트: "프로젝트 전체를 분석하세요."
+     - staged/current/PR: "다음 파일들의 변경 사항만 분석하세요: {파일 목록}"
+     - 특정 디렉토리: "다음 디렉토리 내 파일만 분석하세요: {경로}"
    - **읽기 전용 분석만 수행** (코드 수정 금지)
 
 ### Phase 3: 결과 종합 보고
@@ -65,6 +88,9 @@
 
 ```
 ## 🔍 Team Validation Report: {프로젝트명}
+
+### 검증 범위
+{범위 설명 — 예: "staged changes — 12 files", "전체 프로젝트", "src/auth 디렉토리", "PR #42 — 8 files"}
 
 ### 팀 구성
 | # | 에이전트 | 역할 |
@@ -86,17 +112,13 @@
 ### 📊 Overall Score: X/10
 ```
 
-### Phase 4: 팀 정리
-
-- 모든 에이전트에 shutdown 요청
-- TeamDelete로 리소스 정리
-
 ## 주의사항
 
 - 코드 수정 없이 **읽기 전용 분석**만 수행
 - 민감한 정보(.env 등)는 분석에서 제외
-- 프로젝트 경로가 비어있으면 사용자에게 물어볼 것
+- 프로젝트 경로가 비어있으면 AskUserQuestion으로 범위를 물어볼 것
+- GDScript는 싱글스레드이므로 race condition 지적은 무효
 
 ## 실행 지시
 
-위 Phase 0~4를 순서대로 실행하세요. 대상 프로젝트: **$ARGUMENTS**
+위 Phase 0~3을 순서대로 실행하세요. 대상: **$ARGUMENTS**

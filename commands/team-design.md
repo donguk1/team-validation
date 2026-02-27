@@ -39,6 +39,7 @@
    - **JS/TS 프론트엔드** (Next.js/React): package.json에 next/react 존재
    - **풀스택**: 백엔드 + 프론트엔드 모두 존재
    - **데이터/ML**: pandas, pycaret, sklearn 등 존재
+   - **게임**: project.godot, *.csproj (Unity Assets/ 존재), *.uproject 존재
 5. 기능 요구사항이 비어있으면 사용자에게 물어볼 것
 
 ### Phase 1: 에이전트 선택 (최소 3개, 최대 6개)
@@ -47,6 +48,7 @@
 
 - **Python 백엔드** (FastAPI/Django): architect, api, data-model, task-breakdown (4개)
 - **JS/TS 프론트엔드** (Next.js/React): architect, frontend, task-breakdown (3개)
+- **게임** (Godot/Unity/Unreal): architect, task-breakdown, test-strategy (3개)
 - **풀스택**: architect, api, data-model, frontend, task-breakdown, test-strategy (6개)
 - **데이터/ML**: architect, data-model, task-breakdown (3개)
 
@@ -54,9 +56,8 @@
 
 ### Phase 2: 팀 생성 및 병렬 실행
 
-1. TeamCreate로 `design-{기능명-slug}` 팀 생성
-2. TaskCreate로 에이전트별 설계 태스크 생성
-3. Task tool로 각 에이전트를 **병렬** 실행
+1. TaskCreate로 에이전트별 설계 태스크 생성
+2. Task tool로 각 에이전트를 **병렬** 실행
    - `subagent_type: "general-purpose"` 사용
    - 각 에이전트의 전체 프롬프트(역할, 책임, 프로세스, 출력 형식)를 Task의 prompt에 포함
    - 기능 요구사항과 대상 프로젝트 경로를 명확히 전달
@@ -112,11 +113,6 @@ AskUserQuestion 도구를 사용하여 선택지를 제공할 것.
 2. Phase별로 순서대로 구현
 3. 각 태스크 완료 시 사용자에게 진행 상황 공유
 
-### Phase 6: 팀 정리
-
-- 모든 에이전트에 shutdown 요청
-- TeamDelete로 리소스 정리
-
 ## 주의사항
 
 - Phase 2에서는 **읽기 + 설계 문서 생성**만 수행 (기존 코드 수정 금지)
@@ -127,4 +123,4 @@ AskUserQuestion 도구를 사용하여 선택지를 제공할 것.
 
 ## 실행 지시
 
-위 Phase 0~6을 순서대로 실행하세요. 기능 요구사항: **$ARGUMENTS**
+위 Phase 0~5를 순서대로 실행하세요. 기능 요구사항: **$ARGUMENTS**

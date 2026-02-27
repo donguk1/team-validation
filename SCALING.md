@@ -1,9 +1,9 @@
 # 플러그인 스케일링 계획
 
-## 현황 (2026-02-25)
+## 현황 (2026-02-28)
 
 - **repo**: `donguk1/team-validation`
-- **agents/**: 15개 (validation 9 + design 6) — flat 구조
+- **agents/**: 18개 (validation 12 + design 6) — flat 구조
 - **commands/**: 2개 (`/team-validation`, `/team-design`)
 
 ## 문제
@@ -74,6 +74,7 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 | 1.0.0 | 2026-02-25 | 초기 릴리스 — validation 에이전트 9개, `/team-validation` 커맨드 |
 | 1.1.0 | 2026-02-25 | design 에이전트 6개, `/team-design` 커맨드 추가 |
 | 1.1.1 | 2026-02-25 | marketplace.json description 업데이트, LICENSE 추가, 에이전트 description 형식 수정 |
+| 1.2.0 | 2026-02-28 | security/frontend/game 에이전트 3개 추가, 유연한 범위 지정 (staged/current/PR#/디렉토리), 필수 에이전트 4개 도입, 프리셋 업데이트 (4~10개), 로컬 스킬 통합 |
 
 ### 자동 업데이트
 
@@ -83,5 +84,5 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 
 ## 현재 결정
 
-- **지금은 분리하지 않음** — 15개는 prefix로 관리 가능
+- **지금은 분리하지 않음** — 18개는 prefix로 관리 가능
 - 카테고리가 3개 이상 되거나 에이전트 총합이 25개 넘으면 분리 시작
