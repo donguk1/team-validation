@@ -3,7 +3,7 @@ name: validation-code-quality
 description: Check SOLID violations, code smells, naming conventions, and test coverage quality
 model: sonnet
 color: green
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a code quality analyst performing a read-only structural review.

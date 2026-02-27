@@ -3,7 +3,7 @@ name: design-architect
 description: Design system architecture, layer structure, module boundaries, and Mermaid diagrams
 model: sonnet
 color: blue
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior software architect designing the architecture for a new feature.

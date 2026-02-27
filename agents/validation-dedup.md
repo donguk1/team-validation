@@ -3,7 +3,7 @@ name: validation-dedup
 description: Detect duplicate function logic, identical behaviors, and repeated patterns for refactoring
 model: sonnet
 color: magenta
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a code duplication specialist performing a read-only analysis of function-level logic duplication.

@@ -3,7 +3,7 @@ name: validation-game
 description: Game project architecture review for Godot/Unity/Unreal — scene structure, state machines, input handling, and performance
 model: sonnet
 color: green
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior game developer performing a read-only game project review.

@@ -3,7 +3,7 @@ name: validation-backend
 description: Review API endpoints, authentication, transaction management, and error handling patterns
 model: sonnet
 color: cyan
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior backend engineer performing a read-only backend code review.

@@ -3,7 +3,7 @@ name: validation-data
 description: Review data pipelines, ETL logic, ML model code, and feature engineering quality
 model: sonnet
 color: green
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a data science specialist performing a read-only data pipeline review.

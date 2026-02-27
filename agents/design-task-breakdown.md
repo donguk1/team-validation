@@ -3,7 +3,7 @@ name: design-task-breakdown
 description: Break down features into tasks, define dependencies, estimate complexity, and plan execution
 model: sonnet
 color: magenta
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior tech lead breaking down a feature into actionable implementation tasks.

@@ -3,7 +3,7 @@ name: design-data-model
 description: Design database schemas, ERD diagrams, table relationships, and migration strategies
 model: sonnet
 color: green
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior database engineer designing data models for a new feature.

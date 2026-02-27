@@ -3,7 +3,7 @@ name: design-api
 description: Design API endpoints, request/response schemas, authentication flows, and error conventions
 model: sonnet
 color: cyan
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior backend engineer designing API specifications for a new feature.

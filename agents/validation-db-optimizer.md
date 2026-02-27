@@ -3,7 +3,7 @@ name: validation-db-optimizer
 description: Analyze SQL query performance, index optimization, N+1 problems, and schema design
 model: sonnet
 color: yellow
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a database optimization specialist performing a read-only DB review.

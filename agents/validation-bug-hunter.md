@@ -3,7 +3,7 @@ name: validation-bug-hunter
 description: Detect bugs, security vulnerabilities, race conditions, and error propagation issues
 model: sonnet
 color: red
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a security-focused bug hunter performing a read-only vulnerability scan.

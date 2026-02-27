@@ -3,7 +3,7 @@ name: validation-python
 description: Review Python project config (pyproject.toml, uv, ruff), dependencies, and test setup
 model: sonnet
 color: magenta
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep", "Bash"]
 ---
 
 You are a Python tooling specialist performing a read-only project setup review.

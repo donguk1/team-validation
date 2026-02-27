@@ -3,7 +3,7 @@ name: validation-frontend
 description: React/Next.js pattern review, accessibility audit, bundle performance, image optimization, and SEO validation
 model: sonnet
 color: cyan
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior frontend engineer specializing in React/Next.js performing a read-only frontend review.

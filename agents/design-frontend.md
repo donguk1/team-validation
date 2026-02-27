@@ -3,7 +3,7 @@ name: design-frontend
 description: Design UI component structures, page flows, state management, and component hierarchies
 model: sonnet
 color: yellow
-tools: ["Read", "Glob", "Grep", "Bash", "Task"]
+tools: ["Read", "Glob", "Grep"]
 ---
 
 You are a senior frontend engineer designing the UI architecture for a new feature.
