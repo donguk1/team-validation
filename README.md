@@ -86,7 +86,7 @@ claude plugin marketplace remove team-validation
 | JS/TS 프론트엔드 (Next.js/React) | 필수4 + frontend, dedup, product | 7 |
 | 게임 (Godot/Unity/Unreal) | 필수4 + game | 5 |
 | 데이터/ML | 필수4 + dedup, db-optimizer, python, data | 8 |
-| 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product, python | 10 |
+| 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product + python(Python 존재 시) | 9~10 |
 
 > **필수 4개**: architect, code-quality, bug-hunter, security
 >
@@ -120,7 +120,7 @@ claude plugin marketplace remove team-validation
 | | `/team-validation` | `/team-design` |
 |---|---|---|
 | 목적 | 기존 코드 문제 찾기 | 새 기능 설계 |
-| 입력 | 경로/staged/current/PR#/디렉토리 | 기능 요구사항 텍스트 |
+| 입력 | 경로/staged/current/PR #N/디렉토리 | 기능 요구사항 텍스트 |
 | 동작 | 읽기 전용 분석 | 읽기 + 설계 문서 생성 |
 | 출력 | 점수/이슈 리포트 (범위 표시 포함) | 설계 문서/다이어그램/태스크 |
 | 후속 | 이슈 수정 | 문서만 or 코드 구현까지 선택 |
@@ -198,7 +198,9 @@ team-validation/
 │   ├── design-frontend.md          # 설계: 프론트엔드
 │   ├── design-task-breakdown.md    # 설계: 태스크 분해
 │   └── design-test-strategy.md     # 설계: 테스트 전략
-└── README.md
+├── LICENSE
+├── README.md
+└── SCALING.md
 ```
 
 ## 권한 설정 (권장)
@@ -211,8 +213,7 @@ team-validation/
     "allowedTools": [
       "Read",
       "Glob",
-      "Grep",
-      "Bash"
+      "Grep"
     ]
   }
 }

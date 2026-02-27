@@ -47,7 +47,7 @@
      - 특정 디렉토리/파일 (사용자 입력)
    - **`staged`** → `git diff --cached --name-only`로 대상 파일 목록 수집
    - **`current`** → `git diff --name-only`로 대상 파일 목록 수집
-   - **`#숫자`** → `gh pr diff 숫자 --name-only`로 PR 변경 파일 목록 수집
+   - **`#숫자`** → `gh pr view 숫자 --json files -q '.files[].path'`로 PR 변경 파일 목록 수집
    - **경로** → 해당 경로가 디렉토리면 하위 전체, 파일이면 해당 파일
 2. 프로젝트의 CLAUDE.md, pyproject.toml, package.json, project.godot 등을 읽어 기술 스택 파악
 3. 프로젝트 타입 분류
@@ -57,7 +57,7 @@
 **필수 4개** (모든 프로젝트):
 - architect, code-quality, bug-hunter, security
 
-**code-quality 분할**: 대상 파일이 30개 이상이면 code-quality를 2개 투입 (파일 반씩 분담)
+**code-quality 분할**: 대상 파일이 30개 이상이면 code-quality를 2개 투입 (디렉토리 기준으로 파일 반씩 분담). 분할 시에도 총 에이전트 수는 최대 10개를 넘지 않는다.
 
 프로젝트 특성에 따라 추가 에이전트를 선택합니다:
 
@@ -65,7 +65,7 @@
 - **JS/TS 프론트엔드** (Next.js/React): 필수4 + frontend, dedup, product (7개)
 - **게임** (Godot/Unity/Unreal): 필수4 + game (5개)
 - **데이터/ML**: 필수4 + dedup, db-optimizer, python, data (8개)
-- **풀스택/모노레포**: 필수4 + backend, frontend, dedup, db-optimizer, product, python (10개)
+- **풀스택/모노레포**: 필수4 + backend, frontend, dedup, db-optimizer, product + python(Python 존재 시) (9~10개)
 
 선택한 구성을 사용자에게 테이블로 보여주고 확인받을 것.
 

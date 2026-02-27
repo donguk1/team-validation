@@ -62,10 +62,11 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 ### 릴리스 체크리스트
 
 1. `plugin.json`의 `version` 업데이트
-2. git commit + push
-3. `claude plugin marketplace update team-validation`
-4. `claude plugin update team-validation@team-validation`
-5. Claude Code 재시작
+2. SCALING.md 버전 히스토리에 새 항목 추가 (plugin.json과 버전 동기화 확인)
+3. git commit + push
+4. `claude plugin marketplace update team-validation`
+5. `claude plugin update team-validation@team-validation`
+6. Claude Code 재시작
 
 ### 버전 히스토리
 
@@ -75,6 +76,7 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 | 1.1.0 | 2026-02-25 | design 에이전트 6개, `/team-design` 커맨드 추가 |
 | 1.1.1 | 2026-02-25 | marketplace.json description 업데이트, LICENSE 추가, 에이전트 description 형식 수정 |
 | 1.2.0 | 2026-02-28 | security/frontend/game 에이전트 3개 추가, 유연한 범위 지정 (staged/current/PR#/디렉토리), 필수 에이전트 4개 도입, 프리셋 업데이트 (4~10개), 로컬 스킬 통합 |
+| 1.2.1 | 2026-02-28 | 검증 리포트 기반 품질 개선 — gh pr 명령어 수정, 에이전트 언어/형식 통일, design 에이전트 READ-ONLY 명시, bug-hunter↔security 역할 경계 정리, README allowedTools에서 Bash 제거 |
 
 ### 자동 업데이트
 

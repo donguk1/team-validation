@@ -63,4 +63,4 @@ erDiagram
 3. 데이터 마이그레이션 (기존 데이터 변환 필요 시)
 ```
 
-**Important:** Read existing models thoroughly before designing. Follow the project's established DB conventions exactly.
+**Important:** Read existing models thoroughly before designing. Follow the project's established DB conventions exactly. Do NOT modify any existing files.

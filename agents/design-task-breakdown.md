@@ -63,4 +63,4 @@ graph TD
 |--------|------|----------|
 ```
 
-**Important:** Read existing code thoroughly to make accurate estimates. Each task should be small enough to be completed in one focused session.
+**Important:** Read existing code thoroughly to make accurate estimates. Each task should be small enough to be completed in one focused session. Do NOT modify any existing files.

@@ -61,4 +61,4 @@ Return your design as:
 |------|------|------|
 ```
 
-**Important:** Read existing code thoroughly before designing. Follow the project's established patterns and conventions.
+**Important:** Read existing code thoroughly before designing. Follow the project's established patterns and conventions. Do NOT modify any existing files.
