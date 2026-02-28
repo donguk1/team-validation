@@ -25,7 +25,7 @@ claude plugin marketplace remove team-validation
 
 ### `/team-validation` — 프로젝트 검증
 
-4~10개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다. 유연한 범위 지정을 지원합니다.
+4~11개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다. 유연한 범위 지정을 지원합니다.
 
 ```
 /team-validation <프로젝트 경로>    # 프로젝트 전체
@@ -61,7 +61,7 @@ claude plugin marketplace remove team-validation
 
 ## 검증 에이전트 (validation-*)
 
-프로젝트 특성에 따라 최소 4개 ~ 최대 10개 에이전트가 자동 선택됩니다.
+프로젝트 특성에 따라 최소 4개 ~ 최대 11개 에이전트가 자동 선택됩니다.
 
 | 에이전트 | 역할 |
 |---------|------|
@@ -77,16 +77,17 @@ claude plugin marketplace remove team-validation
 | `validation-data` | 데이터 파이프라인/ML 검증 |
 | `validation-product` | 기능 완성도/UX 검증 |
 | `validation-dedup` | 함수 로직 중복 탐지/리팩토링 제안 |
+| `validation-testing` | 테스트 품질/커버리지/엣지케이스 검증 |
 
 ### 프로젝트 타입별 기본 구성
 
 | 프로젝트 타입 | 에이전트 | 수 |
 |-------------|---------|---|
-| Python 백엔드 (FastAPI/Django) | 필수4 + backend, dedup, db-optimizer, python | 8 |
-| JS/TS 프론트엔드 (Next.js/React) | 필수4 + frontend, dedup, product | 7 |
-| 게임 (Godot/Unity/Unreal) | 필수4 + game | 5 |
+| Python 백엔드 (FastAPI/Django) | 필수4 + backend, dedup, db-optimizer, python, testing | 9 |
+| JS/TS 프론트엔드 (Next.js/React) | 필수4 + frontend, dedup, product, testing | 8 |
+| 게임 (Godot/Unity/Unreal) | 필수4 + game, testing | 6 |
 | 데이터/ML | 필수4 + dedup, db-optimizer, python, data | 8 |
-| 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product + python(Python 존재 시) | 9~10 |
+| 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product, testing + python(Python 존재 시) | 10~11 |
 
 > **필수 4개**: architect, code-quality, bug-hunter, security
 >
@@ -192,6 +193,7 @@ team-validation/
 │   ├── validation-data.md          # 검증: 데이터/ML
 │   ├── validation-product.md       # 검증: 프로덕트
 │   ├── validation-dedup.md         # 검증: 중복 탐지
+│   ├── validation-testing.md       # 검증: 테스트 품질
 │   ├── design-architect.md         # 설계: 아키텍처
 │   ├── design-api.md               # 설계: API
 │   ├── design-data-model.md        # 설계: 데이터 모델
