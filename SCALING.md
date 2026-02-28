@@ -77,6 +77,7 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 | 1.1.1 | 2026-02-25 | marketplace.json description 업데이트, LICENSE 추가, 에이전트 description 형식 수정 |
 | 1.2.0 | 2026-02-28 | security/frontend/game 에이전트 3개 추가, 유연한 범위 지정 (staged/current/PR#/디렉토리), 필수 에이전트 4개 도입, 프리셋 업데이트 (4~10개), 로컬 스킬 통합 |
 | 1.2.1 | 2026-02-28 | 검증 리포트 기반 품질 개선 — gh pr 명령어 수정, 에이전트 언어/형식 통일, design 에이전트 READ-ONLY 명시, bug-hunter↔security 역할 경계 정리, README allowedTools에서 Bash 제거 |
+| 1.2.2 | 2026-02-28 | 에이전트 tools 최소화 — 16개 Read/Glob/Grep만, python/security만 Bash 유지, Task 전면 제거 |
 
 ### 자동 업데이트
 

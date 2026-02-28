@@ -1,6 +1,6 @@
 {
   "name": "team-validation",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Multi-agent project validation & design for Claude Code. Validate existing code with 4~10 agents (scoped: staged/PR/dir/full), or design new features with 3~6 agents in parallel.",
   "author": {
     "name": "donguk1",
