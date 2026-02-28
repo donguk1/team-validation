@@ -3,7 +3,7 @@
 ## 현황 (2026-02-28)
 
 - **repo**: `donguk1/team-validation`
-- **agents/**: 19개 (validation 13 + design 6) — flat 구조
+- **agents/**: 20개 (validation 14 + design 6) — flat 구조
 - **commands/**: 2개 (`/team-validation`, `/team-design`)
 
 ## 문제
@@ -78,7 +78,7 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 | 1.2.0 | 2026-02-28 | security/frontend/game 에이전트 3개 추가, 유연한 범위 지정 (staged/current/PR#/디렉토리), 필수 에이전트 4개 도입, 프리셋 업데이트 (4~10개), 로컬 스킬 통합 |
 | 1.2.1 | 2026-02-28 | 검증 리포트 기반 품질 개선 — gh pr 명령어 수정, 에이전트 언어/형식 통일, design 에이전트 READ-ONLY 명시, bug-hunter↔security 역할 경계 정리, README allowedTools에서 Bash 제거 |
 | 1.2.2 | 2026-02-28 | 에이전트 tools 최소화 — 16개 Read/Glob/Grep만, python/security만 Bash 유지, Task 전면 제거 |
-| 1.3.0 | 2026-03-01 | validation-testing 에이전트 추가, 프리셋 업데이트 (4~11개) |
+| 1.3.0 | 2026-03-01 | validation-testing, validation-devops 에이전트 추가, 프리셋 업데이트 (4~12개) |
 
 ### 자동 업데이트
 
@@ -88,5 +88,5 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 
 ## 현재 결정
 
-- **지금은 분리하지 않음** — 19개는 prefix로 관리 가능
+- **지금은 분리하지 않음** — 20개는 prefix로 관리 가능
 - 카테고리가 3개 이상 되거나 에이전트 총합이 25개 넘으면 분리 시작

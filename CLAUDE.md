@@ -68,7 +68,7 @@ Required 4: architect, code-quality, bug-hunter, security
 | JS/TS frontend | frontend, dedup, product, testing | 8 |
 | Game | game, testing | 6 |
 | Data/ML | dedup, db-optimizer, python, data | 8 |
-| Fullstack | backend, frontend, dedup, db-optimizer, product, testing + python(if exists) | 10~11 |
+| Fullstack | backend, frontend, dedup, db-optimizer, product, testing, devops + python(if exists) | 11~12 |
 
 ### Design (3~6 agents)
 
