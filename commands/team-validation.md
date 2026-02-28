@@ -75,9 +75,9 @@
 
 1. TaskCreate로 에이전트별 검증 태스크 생성
 2. Task tool로 각 에이전트를 **병렬** 실행
-   - `subagent_type: "general-purpose"` 사용
-   - 각 에이전트의 역할과 프롬프트를 Task의 prompt에 포함
-   - 대상 프로젝트 경로를 명확히 전달
+   - `subagent_type: "team-validation:validation-{role}"` 사용 (예: `"team-validation:validation-architect"`)
+   - 에이전트 프롬프트는 자동 로딩됨 — prompt에 에이전트 역할/책임을 포함하지 말 것
+   - prompt에는 **컨텍스트만** 전달: 대상 프로젝트 경로 + 검증 범위 + 기술 스택
    - **검증 범위** 정보를 각 에이전트에게 명시적으로 전달:
      - 전체 프로젝트: "프로젝트 전체를 분석하세요."
      - staged/current/PR: "다음 파일들의 변경 사항만 분석하세요: {파일 목록}"

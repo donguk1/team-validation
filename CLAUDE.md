@@ -4,7 +4,7 @@ Claude Code multi-agent validation & design plugin.
 
 ## Structure
 
-- `agents/validation-*.md` — Read-only analysis agents (12)
+- `agents/validation-*.md` — Read-only analysis agents (14)
 - `agents/design-*.md` — Feature design agents (6)
 - `commands/team-validation.md` — `/team-validation` orchestrator
 - `commands/team-design.md` — `/team-design` orchestrator
@@ -44,7 +44,8 @@ English body with 4 sections:
 
 ## Commands
 
-- Orchestrators use `Task` tool with `subagent_type: "general-purpose"`
+- Orchestrators use `Task` tool with dedicated `subagent_type: "team-validation:{agent-name}"` (e.g. `"team-validation:validation-architect"`)
+- Agent prompts are auto-loaded — Task prompt should contain only context (project path, scope, tech stack)
 - No TeamCreate/TeamDelete (not available in Claude Code API)
 - Empty `$ARGUMENTS` → AskUserQuestion for scope selection
 

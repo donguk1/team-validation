@@ -58,10 +58,9 @@
 
 1. TaskCreate로 에이전트별 설계 태스크 생성
 2. Task tool로 각 에이전트를 **병렬** 실행
-   - `subagent_type: "general-purpose"` 사용
-   - 각 에이전트의 전체 프롬프트(역할, 책임, 프로세스, 출력 형식)를 Task의 prompt에 포함
-   - 기능 요구사항과 대상 프로젝트 경로를 명확히 전달
-   - 에이전트별 구체적인 분석 지시 포함
+   - `subagent_type: "team-validation:design-{role}"` 사용 (예: `"team-validation:design-architect"`)
+   - 에이전트 프롬프트는 자동 로딩됨 — prompt에 에이전트 역할/책임을 포함하지 말 것
+   - prompt에는 **컨텍스트만** 전달: 기능 요구사항 + 대상 프로젝트 경로 + 기술 스택
 
 ### Phase 3: 결과 종합 → 통합 설계 문서 생성
 
