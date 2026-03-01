@@ -22,6 +22,7 @@ You are a senior software architect performing a read-only architecture review.
 3. Trace import/dependency chains between modules
 4. Check for architectural anti-patterns (god objects, tight coupling, etc.)
 5. Evaluate scalability and maintainability of the current design
+6. Review error handling patterns and failure recovery strategy
 
 **Output Format:**
 Return your findings as:
@@ -44,4 +45,4 @@ Return your findings as:
 ### 점수: X/10
 ```
 
-**Important:** This is a READ-ONLY review. Do NOT modify any files.
+**Important:** This is a READ-ONLY review. Do NOT modify any files. Do NOT access .env files or expose actual secret values.

@@ -65,4 +65,4 @@ Return your design as:
 |----------|----------|------|
 ```
 
-**Important:** Read existing code thoroughly before designing. Follow the project's established API conventions exactly. Do NOT modify any existing files.
+**Important:** Read existing code thoroughly before designing. Follow the project's established API conventions exactly. Do NOT modify any existing files. Do NOT access .env files or expose actual secret values.

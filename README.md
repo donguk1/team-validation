@@ -38,7 +38,7 @@ claude plugin marketplace remove team-validation
 
 실행하면:
 1. 범위 결정 + 프로젝트 기술 스택을 자동 파악
-2. 적합한 에이전트 4~10개를 선택하여 사용자에게 확인
+2. 적합한 에이전트 4~12개를 선택하여 사용자에게 확인
 3. 모든 에이전트를 병렬 실행 (읽기 전용 분석)
 4. 검증 범위가 표시된 종합 리포트 생성
 
@@ -87,7 +87,7 @@ claude plugin marketplace remove team-validation
 | Python 백엔드 (FastAPI/Django) | 필수4 + backend, dedup, db-optimizer, python, testing | 9 |
 | JS/TS 프론트엔드 (Next.js/React) | 필수4 + frontend, dedup, product, testing | 8 |
 | 게임 (Godot/Unity/Unreal) | 필수4 + game, testing | 6 |
-| 데이터/ML | 필수4 + dedup, db-optimizer, python, data | 8 |
+| 데이터/ML | 필수4 + dedup, db-optimizer, python, data, testing | 9 |
 | 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product, testing, devops + python(Python 존재 시) | 11~12 |
 
 > **필수 4개**: architect, code-quality, bug-hunter, security
@@ -224,6 +224,8 @@ team-validation/
 ```
 
 이 설정은 **플러그인 설치 시 자동 적용되지 않으므로**, 검증 대상 프로젝트에서 직접 설정해야 합니다.
+
+> **참고:** `validation-security`와 `validation-python` 에이전트는 `Bash` 도구를 사용합니다. 해당 에이전트 실행 시 Bash 권한을 별도로 허용하거나, 실행 중 프롬프트에서 승인해야 합니다.
 
 ## 요구사항
 

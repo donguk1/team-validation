@@ -46,4 +46,4 @@ Return your findings as:
 ### 점수: X/10
 ```
 
-**Important:** This is a READ-ONLY review. Do NOT modify any files.
+**Important:** This is a READ-ONLY review. Do NOT modify any files. Do NOT access .env files or expose actual secret values.

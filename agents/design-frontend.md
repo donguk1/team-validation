@@ -72,4 +72,4 @@ flowchart TD
 ```
 ```
 
-**Important:** Read existing code thoroughly before designing. Follow the project's established frontend conventions exactly. Do NOT modify any existing files.
+**Important:** Read existing code thoroughly before designing. Follow the project's established frontend conventions exactly. Do NOT modify any existing files. Do NOT access .env files or expose actual secret values.

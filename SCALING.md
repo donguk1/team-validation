@@ -80,6 +80,7 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 | 1.2.2 | 2026-02-28 | 에이전트 tools 최소화 — 16개 Read/Glob/Grep만, python/security만 Bash 유지, Task 전면 제거 |
 | 1.3.0 | 2026-03-01 | validation-testing, validation-devops 에이전트 추가, 프리셋 업데이트 (4~12개) |
 | 1.3.1 | 2026-03-01 | 오케스트레이터 subagent_type 전환 — "general-purpose" → "team-validation:{agent}" 전용 타입, 토큰 절약 |
+| 1.3.2 | 2026-03-01 | 셀프 검증 기반 품질 개선 — .env 금지 전체 에이전트 적용, security 영어 전환, Bash 화이트리스트 추가, bug-hunter↔security OWASP 역할 분리, frontend↔product a11y 역할 분리, 데이터/ML 프리셋 testing 추가, #숫자 파싱 검증, Analysis Process 6단계 통일, .gitignore 추가, 문서 동기화 (4~12개) |
 
 ### 자동 업데이트
 

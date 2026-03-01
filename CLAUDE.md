@@ -59,7 +59,7 @@ English body with 4 sections:
 
 ## Presets
 
-### Validation (4~10 agents)
+### Validation (4~12 agents)
 
 Required 4: architect, code-quality, bug-hunter, security
 
@@ -68,7 +68,7 @@ Required 4: architect, code-quality, bug-hunter, security
 | Python backend | backend, dedup, db-optimizer, python, testing | 9 |
 | JS/TS frontend | frontend, dedup, product, testing | 8 |
 | Game | game, testing | 6 |
-| Data/ML | dedup, db-optimizer, python, data | 8 |
+| Data/ML | dedup, db-optimizer, python, data, testing | 9 |
 | Fullstack | backend, frontend, dedup, db-optimizer, product, testing, devops + python(if exists) | 11~12 |
 
 ### Design (3~6 agents)

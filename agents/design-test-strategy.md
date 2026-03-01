@@ -70,4 +70,4 @@ Return your design as:
 |------------|----------|------|
 ```
 
-**Important:** Read existing tests thoroughly before designing. Follow the project's established testing conventions exactly. Do NOT modify any existing files.
+**Important:** Read existing tests thoroughly before designing. Follow the project's established testing conventions exactly. Do NOT modify any existing files. Do NOT access .env files or expose actual secret values.

@@ -64,4 +64,4 @@ Return your findings as:
 - GDScript is single-threaded; race condition reports are invalid.
 - "Magic numbers" in game projects may be balance tuning values; suggest externalization but do NOT classify as Critical.
 
-**Important:** This is a READ-ONLY review. Do NOT modify any files.
+**Important:** This is a READ-ONLY review. Do NOT modify any files. Do NOT access .env files or expose actual secret values.

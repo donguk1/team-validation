@@ -49,7 +49,7 @@
      - 특정 디렉토리/파일 (사용자 입력)
    - **`staged`** → `git diff --cached --name-only`로 대상 파일 목록 수집
    - **`current`** → `git diff --name-only`로 대상 파일 목록 수집
-   - **`#숫자`** → `gh pr view 숫자 --json files -q '.files[].path'`로 PR 변경 파일 목록 수집
+   - **`#숫자`** → 숫자만 추출 (비숫자 문자 포함 시 무시) → `gh pr view 숫자 --json files -q '.files[].path'`로 PR 변경 파일 목록 수집
    - **경로** → 해당 경로가 디렉토리면 하위 전체, 파일이면 해당 파일
 2. 프로젝트의 CLAUDE.md, pyproject.toml, package.json, project.godot 등을 읽어 기술 스택 파악
 3. 프로젝트 타입 분류
@@ -66,7 +66,7 @@
 - **Python 백엔드** (FastAPI/Django): 필수4 + backend, dedup, db-optimizer, python, testing (9개)
 - **JS/TS 프론트엔드** (Next.js/React): 필수4 + frontend, dedup, product, testing (8개)
 - **게임** (Godot/Unity/Unreal): 필수4 + game, testing (6개)
-- **데이터/ML**: 필수4 + dedup, db-optimizer, python, data (8개)
+- **데이터/ML**: 필수4 + dedup, db-optimizer, python, data, testing (9개)
 - **풀스택/모노레포**: 필수4 + backend, frontend, dedup, db-optimizer, product, testing, devops + python(Python 존재 시) (11~12개)
 
 선택한 구성을 사용자에게 테이블로 보여주고 확인받을 것.
