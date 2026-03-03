@@ -25,7 +25,7 @@ claude plugin marketplace remove team-validation
 
 ### `/team-validation` — 프로젝트 검증
 
-4~12개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다. 유연한 범위 지정을 지원합니다.
+5~13개 에이전트가 병렬로 기존 코드를 읽기 전용 분석합니다. 유연한 범위 지정을 지원합니다.
 
 ```
 /team-validation <프로젝트 경로>    # 프로젝트 전체
@@ -38,13 +38,13 @@ claude plugin marketplace remove team-validation
 
 실행하면:
 1. 범위 결정 + 프로젝트 기술 스택을 자동 파악
-2. 적합한 에이전트 4~12개를 선택하여 사용자에게 확인
+2. 적합한 에이전트 5~13개를 선택하여 사용자에게 확인
 3. 모든 에이전트를 병렬 실행 (읽기 전용 분석)
 4. 검증 범위가 표시된 종합 리포트 생성
 
 ### `/team-design` — 기능 설계
 
-3~6개 에이전트가 병렬로 새 기능의 설계 산출물을 만듭니다.
+4~7개 에이전트가 병렬로 새 기능의 설계 산출물을 만듭니다.
 
 ```
 /team-design <기능 요구사항>
@@ -54,14 +54,14 @@ claude plugin marketplace remove team-validation
 
 실행하면:
 1. 기능 요구사항 파악 + 현재 프로젝트 분석
-2. 적합한 에이전트 3~6개를 선택하여 사용자에게 확인
+2. 적합한 에이전트 4~7개를 선택하여 사용자에게 확인
 3. 모든 에이전트를 병렬 실행 (설계 산출물 생성)
 4. 통합 설계 문서 생성
 5. 사용자 선택: "문서만 유지" or "코드 구현 진행"
 
 ## 검증 에이전트 (validation-*)
 
-프로젝트 특성에 따라 최소 4개 ~ 최대 12개 에이전트가 자동 선택됩니다.
+프로젝트 특성에 따라 최소 5개 ~ 최대 13개 에이전트가 자동 선택됩니다.
 
 | 에이전트 | 역할 |
 |---------|------|
@@ -79,24 +79,25 @@ claude plugin marketplace remove team-validation
 | `validation-dedup` | 함수 로직 중복 탐지/리팩토링 제안 |
 | `validation-testing` | 테스트 품질/커버리지/엣지케이스 검증 |
 | `validation-devops` | Dockerfile/CI·CD/배포 설정/인프라 검증 |
+| `validation-devils-advocate` | 아키텍처/설계 결정 반론, 숨겨진 트레이드오프 |
 
 ### 프로젝트 타입별 기본 구성
 
 | 프로젝트 타입 | 에이전트 | 수 |
 |-------------|---------|---|
-| Python 백엔드 (FastAPI/Django) | 필수4 + backend, dedup, db-optimizer, python, testing | 9 |
-| JS/TS 프론트엔드 (Next.js/React) | 필수4 + frontend, dedup, product, testing | 8 |
-| 게임 (Godot/Unity/Unreal) | 필수4 + game, testing | 6 |
-| 데이터/ML | 필수4 + dedup, db-optimizer, python, data, testing | 9 |
-| 풀스택/모노레포 | 필수4 + backend, frontend, dedup, db-optimizer, product, testing, devops + python(Python 존재 시) | 11~12 |
+| Python 백엔드 (FastAPI/Django) | 필수5 + backend, dedup, db-optimizer, python, testing | 10 |
+| JS/TS 프론트엔드 (Next.js/React) | 필수5 + frontend, dedup, product, testing | 9 |
+| 게임 (Godot/Unity/Unreal) | 필수5 + game, testing | 7 |
+| 데이터/ML | 필수5 + dedup, db-optimizer, python, data, testing | 10 |
+| 풀스택/모노레포 | 필수5 + backend, frontend, dedup, db-optimizer, product, testing, devops + python(Python 존재 시) | 12~13 |
 
-> **필수 4개**: architect, code-quality, bug-hunter, security
+> **필수 5개**: architect, code-quality, bug-hunter, security, devils-advocate
 >
 > **code-quality 분할**: 대상 파일 30개 이상이면 code-quality 2개 투입
 
 ## 설계 에이전트 (design-*)
 
-프로젝트 특성에 따라 최소 3개 ~ 최대 6개 에이전트가 자동 선택됩니다.
+프로젝트 특성에 따라 최소 4개 ~ 최대 7개 에이전트가 자동 선택됩니다.
 
 | 에이전트 | 역할 |
 |---------|------|
@@ -106,16 +107,17 @@ claude plugin marketplace remove team-validation
 | `design-frontend` | UI 컴포넌트 구조, 페이지 흐름, 상태 관리 설계 |
 | `design-task-breakdown` | 구현 태스크 분해, 의존성/순서, 예상 복잡도 |
 | `design-test-strategy` | 테스트 전략, 테스트 케이스 목록, E2E 시나리오 |
+| `design-devils-advocate` | 설계 결정 반론, 빠진 고려사항, 대안 제시 |
 
 ### 프로젝트 타입별 기본 구성
 
 | 프로젝트 타입 | 에이전트 | 수 |
 |-------------|---------|---|
-| Python 백엔드 (FastAPI/Django) | architect, api, data-model, task-breakdown | 4 |
-| JS/TS 프론트엔드 (Next.js/React) | architect, frontend, task-breakdown | 3 |
-| 게임 (Godot/Unity/Unreal) | architect, task-breakdown, test-strategy | 3 |
-| 풀스택 | architect, api, data-model, frontend, task-breakdown, test-strategy | 6 |
-| 데이터/ML | architect, data-model, task-breakdown | 3 |
+| Python 백엔드 (FastAPI/Django) | architect, api, data-model, task-breakdown, devils-advocate | 5 |
+| JS/TS 프론트엔드 (Next.js/React) | architect, frontend, task-breakdown, devils-advocate | 4 |
+| 게임 (Godot/Unity/Unreal) | architect, task-breakdown, test-strategy, devils-advocate | 4 |
+| 풀스택 | architect, api, data-model, frontend, task-breakdown, test-strategy, devils-advocate | 7 |
+| 데이터/ML | architect, data-model, task-breakdown, devils-advocate | 4 |
 
 ## 검증 vs 설계 비교
 
@@ -196,12 +198,14 @@ team-validation/
 │   ├── validation-dedup.md         # 검증: 중복 탐지
 │   ├── validation-testing.md       # 검증: 테스트 품질
 │   ├── validation-devops.md        # 검증: DevOps/인프라
+│   ├── validation-devils-advocate.md # 검증: 반론/트레이드오프
 │   ├── design-architect.md         # 설계: 아키텍처
 │   ├── design-api.md               # 설계: API
 │   ├── design-data-model.md        # 설계: 데이터 모델
 │   ├── design-frontend.md          # 설계: 프론트엔드
 │   ├── design-task-breakdown.md    # 설계: 태스크 분해
-│   └── design-test-strategy.md     # 설계: 테스트 전략
+│   ├── design-test-strategy.md     # 설계: 테스트 전략
+│   └── design-devils-advocate.md   # 설계: 반론/대안 제시
 ├── LICENSE
 ├── README.md
 └── SCALING.md
