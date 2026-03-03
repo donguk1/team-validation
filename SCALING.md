@@ -3,7 +3,7 @@
 ## 현황 (2026-02-28)
 
 - **repo**: `donguk1/team-validation`
-- **agents/**: 20개 (validation 14 + design 6) — flat 구조
+- **agents/**: 22개 (validation 15 + design 7) — flat 구조
 - **commands/**: 2개 (`/team-validation`, `/team-design`)
 
 ## 문제
@@ -81,6 +81,9 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 | 1.3.0 | 2026-03-01 | validation-testing, validation-devops 에이전트 추가, 프리셋 업데이트 (4~12개) |
 | 1.3.1 | 2026-03-01 | 오케스트레이터 subagent_type 전환 — "general-purpose" → "team-validation:{agent}" 전용 타입, 토큰 절약 |
 | 1.3.2 | 2026-03-01 | 셀프 검증 기반 품질 개선 — .env 금지 전체 에이전트 적용, security 영어 전환, Bash 화이트리스트 추가, bug-hunter↔security OWASP 역할 분리, frontend↔product a11y 역할 분리, 데이터/ML 프리셋 testing 추가, #숫자 파싱 검증, Analysis Process 6단계 통일, .gitignore 추가, 문서 동기화 (4~12개) |
+| 1.3.3 | 2026-03-03 | 에이전트 프롬프트 High Impact 개선 — validation 14개 "문제+이유+수정 제안" 3요소 출력 필수화, 점수 산정 기준(Critical/Warning 건수 기반) 명시, design 5개 "설계 결정사항(결정/이유/대안)" 테이블 추가 |
+| 1.3.4 | 2026-03-03 | 마스터 가이드 기반 대규모 개선 — 복잡도 기반 모델 분배 (architect/security/bug-hunter → opus), 20개 에이전트 프롬프트에 AI 코드 감사·슬롭스쿼팅·기술부채·보안 품질 게이트 등 마스터 가이드 14개 섹션 인사이트 통합 |
+| 1.4.0 | 2026-03-03 | 반론 전용 에이전트 2개 추가 (validation-devils-advocate, design-devils-advocate), design 에이전트 전체 opus 전환, 필수 에이전트 4→5개, 프리셋 업데이트 (validation 5~13개, design 4~7개) |
 
 ### 자동 업데이트
 
@@ -90,5 +93,5 @@ donguk1/team-review        → /team-review      (PR 리뷰) [미래]
 
 ## 현재 결정
 
-- **지금은 분리하지 않음** — 20개는 prefix로 관리 가능
+- **지금은 분리하지 않음** — 22개는 prefix로 관리 가능
 - 카테고리가 3개 이상 되거나 에이전트 총합이 25개 넘으면 분리 시작

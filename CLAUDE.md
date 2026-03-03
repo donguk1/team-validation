@@ -4,8 +4,8 @@ Claude Code multi-agent validation & design plugin.
 
 ## Structure
 
-- `agents/validation-*.md` — Read-only analysis agents (14)
-- `agents/design-*.md` — Feature design agents (6)
+- `agents/validation-*.md` — Read-only analysis agents (15)
+- `agents/design-*.md` — Feature design agents (7)
 - `commands/team-validation.md` — `/team-validation` orchestrator
 - `commands/team-design.md` — `/team-design` orchestrator
 - `.claude-plugin/plugin.json` — Plugin metadata + version
@@ -24,7 +24,7 @@ tools: ["Read", "Glob", "Grep"] # minimal — only python/security get Bash
 ---
 
 English body with 4 sections:
-1. **Your Core Responsibilities:** — numbered list (5-6 items)
+1. **Your Core Responsibilities:** — numbered list (5-8 items)
 2. **Analysis/Design Process:** — numbered list (6 steps)
 3. **Output Format:** — markdown template inside code block
 4. **Important:** — READ-ONLY constraint + .env prohibition
@@ -59,24 +59,24 @@ English body with 4 sections:
 
 ## Presets
 
-### Validation (4~12 agents)
+### Validation (5~13 agents)
 
-Required 4: architect, code-quality, bug-hunter, security
+Required 5: architect, code-quality, bug-hunter, security, devils-advocate
 
 | Type | Additional | Total |
 |------|-----------|-------|
-| Python backend | backend, dedup, db-optimizer, python, testing | 9 |
-| JS/TS frontend | frontend, dedup, product, testing | 8 |
-| Game | game, testing | 6 |
-| Data/ML | dedup, db-optimizer, python, data, testing | 9 |
-| Fullstack | backend, frontend, dedup, db-optimizer, product, testing, devops + python(if exists) | 11~12 |
+| Python backend | backend, dedup, db-optimizer, python, testing | 10 |
+| JS/TS frontend | frontend, dedup, product, testing | 9 |
+| Game | game, testing | 7 |
+| Data/ML | dedup, db-optimizer, python, data, testing | 10 |
+| Fullstack | backend, frontend, dedup, db-optimizer, product, testing, devops + python(if exists) | 12~13 |
 
-### Design (3~6 agents)
+### Design (4~7 agents)
 
 | Type | Agents | Total |
 |------|--------|-------|
-| Python backend | architect, api, data-model, task-breakdown | 4 |
-| JS/TS frontend | architect, frontend, task-breakdown | 3 |
-| Game | architect, task-breakdown, test-strategy | 3 |
-| Fullstack | architect, api, data-model, frontend, task-breakdown, test-strategy | 6 |
-| Data/ML | architect, data-model, task-breakdown | 3 |
+| Python backend | architect, api, data-model, task-breakdown, devils-advocate | 5 |
+| JS/TS frontend | architect, frontend, task-breakdown, devils-advocate | 4 |
+| Game | architect, task-breakdown, test-strategy, devils-advocate | 4 |
+| Fullstack | architect, api, data-model, frontend, task-breakdown, test-strategy, devils-advocate | 7 |
+| Data/ML | architect, data-model, task-breakdown, devils-advocate | 4 |

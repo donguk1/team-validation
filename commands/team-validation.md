@@ -36,6 +36,7 @@
 | validation-dedup | `.claude/agents/validation-dedup.md` | 함수 로직 중복 탐지/리팩토링 제안 |
 | validation-testing | `.claude/agents/validation-testing.md` | 테스트 품질/커버리지/엣지케이스 검증 |
 | validation-devops | `.claude/agents/validation-devops.md` | Dockerfile/CI·CD/배포 설정/인프라 검증 |
+| validation-devils-advocate | `.claude/agents/validation-devils-advocate.md` | 아키텍처/설계 결정 반론, 숨겨진 트레이드오프 |
 
 ## 실행 순서
 
@@ -54,20 +55,20 @@
 2. 프로젝트의 CLAUDE.md, pyproject.toml, package.json, project.godot 등을 읽어 기술 스택 파악
 3. 프로젝트 타입 분류
 
-### Phase 1: 에이전트 선택 (최소 4개, 최대 12개)
+### Phase 1: 에이전트 선택 (최소 5개, 최대 13개)
 
-**필수 4개** (모든 프로젝트):
-- architect, code-quality, bug-hunter, security
+**필수 5개** (모든 프로젝트):
+- architect, code-quality, bug-hunter, security, devils-advocate
 
-**code-quality 분할**: 대상 파일이 30개 이상이면 code-quality를 2개 투입 (디렉토리 기준으로 파일 반씩 분담). 분할 시에도 총 에이전트 수는 최대 12개를 넘지 않는다.
+**code-quality 분할**: 대상 파일이 30개 이상이면 code-quality를 2개 투입 (디렉토리 기준으로 파일 반씩 분담). 분할 시에도 총 에이전트 수는 최대 13개를 넘지 않는다.
 
 프로젝트 특성에 따라 추가 에이전트를 선택합니다:
 
-- **Python 백엔드** (FastAPI/Django): 필수4 + backend, dedup, db-optimizer, python, testing (9개)
-- **JS/TS 프론트엔드** (Next.js/React): 필수4 + frontend, dedup, product, testing (8개)
-- **게임** (Godot/Unity/Unreal): 필수4 + game, testing (6개)
-- **데이터/ML**: 필수4 + dedup, db-optimizer, python, data, testing (9개)
-- **풀스택/모노레포**: 필수4 + backend, frontend, dedup, db-optimizer, product, testing, devops + python(Python 존재 시) (11~12개)
+- **Python 백엔드** (FastAPI/Django): 필수5 + backend, dedup, db-optimizer, python, testing (10개)
+- **JS/TS 프론트엔드** (Next.js/React): 필수5 + frontend, dedup, product, testing (9개)
+- **게임** (Godot/Unity/Unreal): 필수5 + game, testing (7개)
+- **데이터/ML**: 필수5 + dedup, db-optimizer, python, data, testing (10개)
+- **풀스택/모노레포**: 필수5 + backend, frontend, dedup, db-optimizer, product, testing, devops + python(Python 존재 시) (12~13개)
 
 선택한 구성을 사용자에게 테이블로 보여주고 확인받을 것.
 

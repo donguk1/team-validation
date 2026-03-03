@@ -26,6 +26,7 @@
 | design-frontend | `.claude/agents/design-frontend.md` | UI 컴포넌트 구조, 페이지 흐름, 상태 관리 설계 |
 | design-task-breakdown | `.claude/agents/design-task-breakdown.md` | 구현 태스크 분해, 의존성/순서, 예상 복잡도 |
 | design-test-strategy | `.claude/agents/design-test-strategy.md` | 테스트 전략, 테스트 케이스 목록, E2E 시나리오 |
+| design-devils-advocate | `.claude/agents/design-devils-advocate.md` | 설계 결정 반론, 빠진 고려사항, 대안 제시 |
 
 ## 실행 순서
 
@@ -42,15 +43,15 @@
    - **게임**: project.godot, *.csproj (Unity Assets/ 존재), *.uproject 존재
 5. 기능 요구사항이 비어있으면 사용자에게 물어볼 것
 
-### Phase 1: 에이전트 선택 (최소 3개, 최대 6개)
+### Phase 1: 에이전트 선택 (최소 4개, 최대 7개)
 
 프로젝트 특성에 따라 적합한 에이전트를 선택합니다:
 
-- **Python 백엔드** (FastAPI/Django): architect, api, data-model, task-breakdown (4개)
-- **JS/TS 프론트엔드** (Next.js/React): architect, frontend, task-breakdown (3개)
-- **게임** (Godot/Unity/Unreal): architect, task-breakdown, test-strategy (3개)
-- **풀스택**: architect, api, data-model, frontend, task-breakdown, test-strategy (6개)
-- **데이터/ML**: architect, data-model, task-breakdown (3개)
+- **Python 백엔드** (FastAPI/Django): architect, api, data-model, task-breakdown, devils-advocate (5개)
+- **JS/TS 프론트엔드** (Next.js/React): architect, frontend, task-breakdown, devils-advocate (4개)
+- **게임** (Godot/Unity/Unreal): architect, task-breakdown, test-strategy, devils-advocate (4개)
+- **풀스택**: architect, api, data-model, frontend, task-breakdown, test-strategy, devils-advocate (7개)
+- **데이터/ML**: architect, data-model, task-breakdown, devils-advocate (4개)
 
 선택한 구성을 사용자에게 테이블로 보여주고 확인받을 것.
 
@@ -90,6 +91,9 @@
 
 ### 6. 테스트 전략 (design-test-strategy)
 (test-strategy 에이전트 결과 — 선택된 경우)
+
+### 7. 설계 반론 검토 (design-devils-advocate)
+(devils-advocate 에이전트 결과)
 ```
 
 에이전트 결과 간 충돌이 있으면 직접 조율하여 일관성 있는 문서로 통합할 것.
