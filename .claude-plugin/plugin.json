@@ -1,13 +1,13 @@
 {
   "name": "team-validation",
-  "version": "1.4.0",
-  "description": "Multi-agent project validation & design for Claude Code. Validate existing code with 5~13 agents (scoped: staged/PR/dir/full), or design new features with 4~7 agents in parallel.",
+  "version": "1.5.0",
+  "description": "Multi-agent project planning, design & validation for Claude Code. Plan with 4 agents, design with 4~7 agents, or validate existing code with 5~13 agents in parallel.",
   "author": {
     "name": "donguk1",
     "url": "https://github.com/donguk1"
   },
   "repository": "https://github.com/donguk1/team-validation",
   "license": "MIT",
-  "keywords": ["validation", "design", "agents", "code-review", "architecture", "feature-design", "security", "frontend", "game-dev"],
+  "keywords": ["validation", "design", "planning", "agents", "code-review", "architecture", "feature-design", "security", "frontend", "game-dev"],
   "commands": "./commands"
 }

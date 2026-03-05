@@ -1,8 +1,8 @@
 # team-validation
 
-Claude Code 멀티 에이전트 프로젝트 검증 & 설계 플러그인.
+Claude Code 멀티 에이전트 프로젝트 기획 & 설계 & 검증 플러그인.
 
-전문 에이전트가 병렬로 프로젝트를 검증하거나, 새 기능을 설계합니다. 외부 의존성 없음.
+전문 에이전트가 병렬로 프로젝트를 기획하거나, 새 기능을 설계하거나, 기존 코드를 검증합니다. 외부 의존성 없음.
 
 ## 설치
 
@@ -22,6 +22,23 @@ claude plugin marketplace remove team-validation
 ```
 
 ## 커맨드
+
+### `/team-plan` — 프로젝트 기획
+
+4개 에이전트가 병렬로 프로젝트 기획 산출물을 만듭니다.
+
+```
+/team-plan <프로젝트 아이디어 또는 요구사항>
+/team-plan "인터뷰 스케줄링 웹앱 — Google 로그인, 캘린더 연동"
+/team-plan "사내 지식 관리 시스템"
+```
+
+실행하면:
+1. 요구사항 파악 + 기존 프로젝트 확인 (있으면 컨텍스트로 활용)
+2. 4개 에이전트 확인
+3. 모든 에이전트를 병렬 실행 (기획 산출물 생성)
+4. 통합 기획서 생성
+5. 사용자 선택: "기획서만 유지" or "/team-design으로 설계 진행"
 
 ### `/team-validation` — 프로젝트 검증
 
@@ -58,6 +75,17 @@ claude plugin marketplace remove team-validation
 3. 모든 에이전트를 병렬 실행 (설계 산출물 생성)
 4. 통합 설계 문서 생성
 5. 사용자 선택: "문서만 유지" or "코드 구현 진행"
+
+## 기획 에이전트 (plan-*)
+
+항상 4개 에이전트가 모두 실행됩니다.
+
+| 에이전트 | 역할 |
+|---------|------|
+| `plan-scope` | MVP 스코프 정의, MoSCoW 우선순위, 페이즈 로드맵 |
+| `plan-tech-stack` | 기술 스택 추천, 대안 비교, Build vs Buy |
+| `plan-user-story` | 사용자 스토리, 인수 조건, 여정 맵 |
+| `plan-devils-advocate` | 기획 반론, 빠진 요구사항, 스코프 리스크 |
 
 ## 검증 에이전트 (validation-*)
 
@@ -119,17 +147,36 @@ claude plugin marketplace remove team-validation
 | 풀스택 | architect, api, data-model, frontend, task-breakdown, test-strategy, devils-advocate | 7 |
 | 데이터/ML | architect, data-model, task-breakdown, devils-advocate | 4 |
 
-## 검증 vs 설계 비교
+## 기획 vs 설계 vs 검증 비교
 
-| | `/team-validation` | `/team-design` |
-|---|---|---|
-| 목적 | 기존 코드 문제 찾기 | 새 기능 설계 |
-| 입력 | 경로/staged/current/PR #N/디렉토리 | 기능 요구사항 텍스트 |
-| 동작 | 읽기 전용 분석 | 읽기 + 설계 문서 생성 |
-| 출력 | 점수/이슈 리포트 (범위 표시 포함) | 설계 문서/다이어그램/태스크 |
-| 후속 | 이슈 수정 | 문서만 or 코드 구현까지 선택 |
+| | `/team-plan` | `/team-design` | `/team-validation` |
+|---|---|---|---|
+| 목적 | 프로젝트 기획 | 새 기능 설계 | 기존 코드 문제 찾기 |
+| 입력 | 아이디어/요구사항 텍스트 | 기능 요구사항 텍스트 | 경로/staged/current/PR #N/디렉토리 |
+| 동작 | 읽기 + 기획 문서 생성 | 읽기 + 설계 문서 생성 | 읽기 전용 분석 |
+| 출력 | 스코프/기술스택/스토리/반론 | 설계 문서/다이어그램/태스크 | 점수/이슈 리포트 (범위 표시 포함) |
+| 에이전트 | 항상 4개 | 4~7개 | 5~13개 |
+| 후속 | 기획서만 or /team-design 진행 | 문서만 or 코드 구현까지 선택 | 이슈 수정 |
 
 ## 출력 예시
+
+### 기획 (/team-plan)
+
+```
+📋 Team Plan Report: 인터뷰 스케줄링 웹앱
+
+| # | 에이전트 | 역할 |
+|---|---------|------|
+| 1 | plan-scope | 스코프 정의 |
+| 2 | plan-tech-stack | 기술 스택 추천 |
+| 3 | plan-user-story | 사용자 스토리 |
+| 4 | plan-devils-advocate | 기획 반론 |
+
+1. 스코프 정의 — MoSCoW 우선순위, 페이즈 로드맵
+2. 기술 스택 — 대안 비교, Build vs Buy
+3. 사용자 스토리 — 페르소나, 인수 조건, 여정 맵
+4. 기획 반론 — 빠진 요구사항, 스코프 리스크
+```
 
 ### 검증 (/team-validation)
 
@@ -181,9 +228,14 @@ team-validation/
 │   ├── plugin.json              # 플러그인 메타데이터
 │   └── marketplace.json         # 마켓플레이스 등록 정보
 ├── commands/
-│   ├── team-validation.md       # /team-validation 슬래시 커맨드
-│   └── team-design.md           # /team-design 슬래시 커맨드
+│   ├── team-plan.md             # /team-plan 슬래시 커맨드
+│   ├── team-design.md           # /team-design 슬래시 커맨드
+│   └── team-validation.md       # /team-validation 슬래시 커맨드
 ├── agents/
+│   ├── plan-scope.md               # 기획: 스코프/MoSCoW
+│   ├── plan-tech-stack.md          # 기획: 기술 스택
+│   ├── plan-user-story.md          # 기획: 사용자 스토리
+│   ├── plan-devils-advocate.md     # 기획: 반론/리스크
 │   ├── validation-architect.md     # 검증: 아키텍처
 │   ├── validation-backend.md       # 검증: 백엔드
 │   ├── validation-code-quality.md  # 검증: 코드 품질

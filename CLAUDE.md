@@ -1,13 +1,15 @@
 # team-validation
 
-Claude Code multi-agent validation & design plugin.
+Claude Code multi-agent planning, design & validation plugin.
 
 ## Structure
 
-- `agents/validation-*.md` — Read-only analysis agents (15)
+- `agents/plan-*.md` — Planning agents (4)
 - `agents/design-*.md` — Feature design agents (7)
-- `commands/team-validation.md` — `/team-validation` orchestrator
+- `agents/validation-*.md` — Read-only analysis agents (15)
+- `commands/team-plan.md` — `/team-plan` orchestrator
 - `commands/team-design.md` — `/team-design` orchestrator
+- `commands/team-validation.md` — `/team-validation` orchestrator
 - `.claude-plugin/plugin.json` — Plugin metadata + version
 
 ## Agent File Format
@@ -58,6 +60,12 @@ English body with 4 sections:
 - Auto-update is enabled on marketplace
 
 ## Presets
+
+### Plan (always 4 agents)
+
+| Agents | Total |
+|--------|-------|
+| scope, tech-stack, user-story, devils-advocate | 4 |
 
 ### Validation (5~13 agents)
 

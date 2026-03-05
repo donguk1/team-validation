@@ -8,9 +8,9 @@
     {
       "name": "team-validation",
       "source": "./",
-      "description": "Multi-agent project validation & design for Claude Code. Validate existing code or design new features in parallel.",
+      "description": "Multi-agent project planning, design & validation for Claude Code. Plan new projects, design features, or validate existing code in parallel.",
       "category": "testing",
-      "tags": ["validation", "design", "agents", "code-review", "architecture", "feature-design"]
+      "tags": ["validation", "design", "planning", "agents", "code-review", "architecture", "feature-design"]
     }
   ]
 }

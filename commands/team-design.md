@@ -33,8 +33,9 @@
 ### Phase 0: 기능 요구사항 파악 + 현재 프로젝트 분석
 
 1. `$ARGUMENTS`에서 기능 요구사항 텍스트를 추출
-2. `--project` 옵션이 있으면 해당 프로젝트, 없으면 현재 작업 디렉토리 사용
-3. 프로젝트의 CLAUDE.md, pyproject.toml, package.json 등을 읽어 기술 스택 파악
+2. 기존 `/team-plan` 결과(기획서)가 대화 컨텍스트에 있으면 해당 기획서를 컨텍스트로 활용 — 스코프, 기술 스택 추천, 사용자 스토리를 설계에 반영
+3. `--project` 옵션이 있으면 해당 프로젝트, 없으면 현재 작업 디렉토리 사용
+4. 프로젝트의 CLAUDE.md, pyproject.toml, package.json 등을 읽어 기술 스택 파악
 4. 프로젝트 타입 분류:
    - **Python 백엔드** (FastAPI/Django): pyproject.toml 또는 requirements.txt에 fastapi/django 존재
    - **JS/TS 프론트엔드** (Next.js/React): package.json에 next/react 존재
